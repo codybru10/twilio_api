@@ -15,5 +15,3 @@ class Message < ActiveRecord::Base
     ).execute
   end
 end
-AC4b1620503889020af7a27cf06a8f40b7
-35b34fcab955b28a705e9cbd2f5e9b12

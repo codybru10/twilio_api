@@ -48,6 +48,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'pry'
   gem 'simplecov', require: false
+  gem 'dotenv-rails'
 end
 
 group :development do
