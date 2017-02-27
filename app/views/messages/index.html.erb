@@ -1,0 +1,13 @@
+<h1>Messages</h1>
+
+<% if @user.messages.any? %>
+  <% @user.messages.each do |message| %>
+    <li><%= link_to message.body, user_message_path(current_user, message) %></li>
+  <% end %>
+  <% else %>
+    <p>
+      You don't have any messages yet
+    </p>
+<% end %>
+
+<%= link_to "Send Message", new_user_message_path(current_user) %>

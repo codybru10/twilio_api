@@ -1,0 +1,24 @@
+<h3>Contact Info:</h3>
+<p>
+  First Name: <%= @contact.first_name %>
+</p>
+<p>
+  Last Name: <%= @contact.last_name %>
+</p>
+<p>
+  Phone Number: <%= @contact.phone_number %>
+</p>
+
+
+<h5>Message <%= @contact.first_name %> <%= @contact.last_name  %></h5>
+
+<%= form_for [current_user, @message] do |f| %>
+   <%= f.hidden_field :to, value: @contact.phone_number %>
+   <%= f.label :body %>
+   <%= f.text_field :body %>
+   <%= f.hidden_field :from, value: current_user.send_number %>
+
+   <%= f.submit class: "btn link-btn" %>
+
+
+ <% end %>

@@ -1,0 +1,15 @@
+<% if @contacts.any? %>
+  <ul>
+    <% @contacts.each do |contact| %>
+      <li><%= link_to contact.last_name, user_contact_path(current_user, contact)  %>, <%= link_to contact.first_name, user_contact_path(current_user, contact)  %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>
+    You don't have contacts yet
+  </p>
+<% end %>
+
+<p>
+  <%= link_to "Add Contact", new_user_contact_path(current_user) %>
+</p>
