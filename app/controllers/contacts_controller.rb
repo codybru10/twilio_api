@@ -3,6 +3,7 @@ class ContactsController < ApplicationController
     @contacts = current_user.contacts
   end
   def new
+    @users = User.all
     @contact = Contact.new
   end
   def create

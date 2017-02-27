@@ -14,3 +14,15 @@
 
 
  <% end %>
+
+<br>
+<hr>
+<br>
+
+<% @users.each do |contact| %>
+  <%= form_for [current_user, contact] do |f|%>
+    <h4><%= contact.first_name %></h4>
+    <h4><%= contact.last_name %></h4>
+    <%= f.hidden_field, :value => contact.id %>
+    <%= f.submit %>
+<% end %>

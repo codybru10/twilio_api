@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   end
 
   def index
+    @contact = Contact.find(params[:contact_id])
     @user = current_user
   end
 
@@ -15,10 +16,11 @@ class MessagesController < ApplicationController
 
   def create
     @user = current_user
-    @message = Message.new(message_params)
+    @contact = Contact.find(params[:contact_id])
+    @message = @contact.messages.new(message_params)
     @message[:user_id] = @user.id
     if @message.save
-      redirect_to user_message_path(@user, @message)
+      redirect_to user_contact_path(@user, @contact)
     else
       render :new
     end

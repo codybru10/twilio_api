@@ -8,11 +8,19 @@
 <p>
   Phone Number: <%= @contact.phone_number %>
 </p>
-
-
+<hr>
+<% if @contact.messages.any? %>
+  <% @contact.messages.each do |message|%>
+  <p>-<%= message.body %></p>
+  <% end %>
+<% else %>
+<p>
+  You don't havee any messages with <%= @contact.first_name %> yet
+</p>
+<% end %>
 <h5>Message <%= @contact.first_name %> <%= @contact.last_name  %></h5>
 
-<%= form_for [current_user, @message] do |f| %>
+<%= form_for [@contact, @message] do |f| %>
    <%= f.hidden_field :to, value: @contact.phone_number %>
    <%= f.label :body %>
    <%= f.text_field :body %>
