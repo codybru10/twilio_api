@@ -1,13 +1,14 @@
 <h1>Messages</h1>
+<div class="collection">
 
-<% if @user.messages.any? %>
-  <% @user.messages.each do |message| %>
-    <li><%= link_to message.body, user_message_path(current_user, message) %></li>
+  <% if @user.messages.any? %>
+    <% @user.messages.each do |message| %>
+      <h5 class="collection-item"><%= link_to message.body, user_message_path(current_user, message) %></h4>
+    <% end %>
+    <% else %>
+      <p>
+        You don't have any messages yet
+      </p>
   <% end %>
-  <% else %>
-    <p>
-      You don't have any messages yet
-    </p>
-<% end %>
 
-<%= link_to "Send Message", new_contact_message_path(@contact) %>
+</div>

@@ -1,32 +1,36 @@
-<h3>Contact Info:</h3>
+<h3>Contact Info</h3>
 <p>
-  First Name: <%= @contact.first_name %>
+  <%= @contact.first_name %> <%= @contact.last_name %>
 </p>
 <p>
-  Last Name: <%= @contact.last_name %>
-</p>
-<p>
-  Phone Number: <%= @contact.phone_number %>
+ <%= @contact.phone_number %>
 </p>
 <hr>
+<h4>Messages</h4>
 <% if @contact.messages.any? %>
-  <% @contact.messages.each do |message|%>
-  <p>-<%= message.body %></p>
+
+  <div class="collection">
+    <% @contact.messages.each do |message|%>
+      <p class="collection-item"><%= message.body %></p>
   <% end %>
+  </div>
 <% else %>
 <p>
-  You don't havee any messages with <%= @contact.first_name %> yet
+  You don't have any messages with <%= @contact.first_name %> yet
 </p>
 <% end %>
-<h5>Message <%= @contact.first_name %> <%= @contact.last_name  %></h5>
 
-<%= form_for [@contact, @message] do |f| %>
-   <%= f.hidden_field :to, value: @contact.phone_number %>
-   <%= f.label :body %>
-   <%= f.text_field :body %>
-   <%= f.hidden_field :from, value: current_user.send_number %>
+<div class="card">
+  <h5>Message <%= @contact.first_name %> <%= @contact.last_name  %></h5>
+
+  <%= form_for [@contact, @message] do |f| %>
+     <%= f.hidden_field :to, value: @contact.phone_number %>
+     <%= f.label :body %>
+     <%= f.text_field :body %>
+     <%= f.hidden_field :from, value: current_user.send_number %>
 
    <%= f.submit class: "btn link-btn" %>
+ </div>
 
 
  <% end %>

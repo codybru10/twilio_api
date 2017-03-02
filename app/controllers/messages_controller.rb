@@ -5,8 +5,8 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @contact = Contact.find(params[:contact_id])
     @user = current_user
+    @messages = @user.messages
   end
 
   def show
